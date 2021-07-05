@@ -39,8 +39,14 @@ confirmedPassword.addEventListener('blur',()=>{
     }
 })
 
-submitButton.addEventListener('submit',()=>{
+submitButton.addEventListener('click',()=>{
     if(email.validity.valid && country.validity.valid && zipCode.validity.valid && confirmedPassword.validity.valid){
         alert('Nicely Done');
+    }
+})
+
+submitButton.addEventListener('keyup',(e)=>{
+    if(e.code==='Enter'){
+        submitButton.click();
     }
 })
