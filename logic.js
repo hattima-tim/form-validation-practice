@@ -1,33 +1,46 @@
-let form=document.querySelector('form');
+let email=document.querySelector('#email');
 let country=document.querySelector('#country');
+let zipCode=document.querySelector('#zip');
 let password=document.querySelector('#password');
-let errorMessage=document.querySelector('.error');
-let submitButton=document.querySelector('button');
-
+let submitButton=document.querySelector('#submit');
 let confirmedPassword=document.querySelector('#password_validation');
+let icons=document.querySelectorAll('i');
+icons.forEach((icon)=>{
+    icon.addEventListener('click',(e)=>{
+        if(icon.classList.contains('fa-eye')){
+            e.target.previousElementSibling.setAttribute('type','password');
+            icon.classList.replace('fa-eye','fa-eye-slash')
+        }
+        else {
+            e.target.previousElementSibling.setAttribute('type','text')
+            icon.classList.replace('fa-eye-slash','fa-eye')
 
-country.addEventListener('change',()=>{
+        }
+    })
+})
+
+country.addEventListener('blur',()=>{
     let countryName=country.value.toLowerCase();
     if (countryName==='united states'){
-        form[3].setAttribute('required','required');
+        zipCode.setAttribute('required','required');
     }
     else {
-        form[3].removeAttribute('required');
+        zipCode.removeAttribute('required');
     }
 })
 
 confirmedPassword.addEventListener('blur',()=>{
     if(password.value!==confirmedPassword.value){
-        errorMessage.textContent='did not match'
+        confirmedPassword.setCustomValidity('Password did not match');
+        confirmedPassword.reportValidity();
     }
     else {
-        errorMessage.textContent='';
+        confirmedPassword.setCustomValidity('');
     }
 })
 
-submitButton.addEventListener('click',(e)=>{
-    if(password.value!==confirmedPassword.value){
-        errorMessage.textContent='did not match'
-        e.preventDefault();
+submitButton.addEventListener('submit',()=>{
+    if(email.validity.valid && country.validity.valid && zipCode.validity.valid && confirmedPassword.validity.valid){
+        alert('Nicely Done');
     }
 })
