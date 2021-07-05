@@ -1,1 +1,1 @@
-# form-validation-practice
+The purspose of this project is to practice client side validation techniques learned from [this](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) MDN article.
