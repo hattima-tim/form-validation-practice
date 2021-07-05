@@ -1,14 +1,15 @@
-let email=document.querySelector('#email');
-let country=document.querySelector('#country');
-let zipCode=document.querySelector('#zip');
-let password=document.querySelector('#password');
+let emailInput=document.querySelector('#emailInput');
+let countryInput=document.querySelector('#countryInput');
+let zipCodeInput=document.querySelector('#zip');
+let passwordInput=document.querySelector('#passwordInput');
+let confirmedPasswordInput=document.querySelector('#password_validation');
 let submitButton=document.querySelector('#submit');
-let confirmedPassword=document.querySelector('#password_validation');
+
 let icons=document.querySelectorAll('i');
 icons.forEach((icon)=>{
     icon.addEventListener('click',(e)=>{
         if(icon.classList.contains('fa-eye')){
-            e.target.previousElementSibling.setAttribute('type','password');
+            e.target.previousElementSibling.setAttribute('type','passwordInput');
             icon.classList.replace('fa-eye','fa-eye-slash')
         }
         else {
@@ -19,28 +20,28 @@ icons.forEach((icon)=>{
     })
 })
 
-country.addEventListener('blur',()=>{
-    let countryName=country.value.toLowerCase();
+countryInput.addEventListener('blur',()=>{
+    let countryName=countryInput.value.toLowerCase();
     if (countryName==='united states'){
-        zipCode.setAttribute('required','required');
+        zipCodeInput.setAttribute('required','required');
     }
     else {
-        zipCode.removeAttribute('required');
+        zipCodeInput.removeAttribute('required');
     }
 })
 
-confirmedPassword.addEventListener('blur',()=>{
-    if(password.value!==confirmedPassword.value){
-        confirmedPassword.setCustomValidity('Password did not match');
-        confirmedPassword.reportValidity();
+confirmedPasswordInput.addEventListener('blur',()=>{
+    if(passwordInput.value!==confirmedPasswordInput.value){
+        confirmedPasswordInput.setCustomValidity('Password did not match');
+        confirmedPasswordInput.reportValidity();
     }
     else {
-        confirmedPassword.setCustomValidity('');
+        confirmedPasswordInput.setCustomValidity('');
     }
 })
 
 submitButton.addEventListener('click',()=>{
-    if(email.validity.valid && country.validity.valid && zipCode.validity.valid && confirmedPassword.validity.valid){
+    if(emailInput.validity.valid && countryInput.validity.valid && zipCodeInput.validity.valid && confirmedPasswordInput.validity.valid){
         alert('Nicely Done');
     }
 })
