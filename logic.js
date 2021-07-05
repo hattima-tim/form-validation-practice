@@ -1,7 +1,7 @@
-let emailInput=document.querySelector('#emailInput');
-let countryInput=document.querySelector('#countryInput');
+let emailInput=document.querySelector('#email');
+let countryInput=document.querySelector('#country');
 let zipCodeInput=document.querySelector('#zip');
-let passwordInput=document.querySelector('#passwordInput');
+let passwordInput=document.querySelector('#password');
 let confirmedPasswordInput=document.querySelector('#password_validation');
 let submitButton=document.querySelector('#submit');
 
@@ -9,7 +9,7 @@ let icons=document.querySelectorAll('i');
 icons.forEach((icon)=>{
     icon.addEventListener('click',(e)=>{
         if(icon.classList.contains('fa-eye')){
-            e.target.previousElementSibling.setAttribute('type','passwordInput');
+            e.target.previousElementSibling.setAttribute('type','password');
             icon.classList.replace('fa-eye','fa-eye-slash')
         }
         else {
