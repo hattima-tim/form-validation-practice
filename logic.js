@@ -5,6 +5,18 @@ let passwordInput=document.querySelector('#password');
 let confirmedPasswordInput=document.querySelector('#password_validation');
 let submitButton=document.querySelector('#submit');
 
+emailInput.addEventListener('blur',()=>{
+    if(emailInput.validity.valid===false){
+        emailInput.reportValidity();
+    }
+})
+
+countryInput.addEventListener('blur',()=>{
+    if(countryInput.validity.valueMissing){
+        countryInput.reportValidity();
+    }
+})
+
 let icons=document.querySelectorAll('i');
 icons.forEach((icon)=>{
     icon.addEventListener('click',(e)=>{
