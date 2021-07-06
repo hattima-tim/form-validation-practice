@@ -8,12 +8,50 @@ let submitButton=document.querySelector('#submit');
 emailInput.addEventListener('blur',()=>{
     if(emailInput.validity.valid===false){
         emailInput.reportValidity();
+        emailInput.classList.add('invalid');
+    }
+    else {
+        emailInput.classList.remove('invalid');
     }
 })
 
 countryInput.addEventListener('blur',()=>{
     if(countryInput.validity.valueMissing){
         countryInput.reportValidity();
+        countryInput.classList.add('invalid');
+    }
+    else{
+        countryInput.classList.remove('invalid');
+        let countryName=countryInput.value.toLowerCase();
+        if (countryName==='united states'){
+            zipCodeInput.setAttribute('required','required');
+        }
+        else {
+            //in case when user first written united states as a country
+            // and then changed the country name
+            zipCodeInput.removeAttribute('required');
+        }
+    }
+})
+
+zipCodeInput.addEventListener('blur',()=>{
+    if (zipCodeInput.validity.valid) {
+        zipCodeInput.classList.remove('invalid');
+    }
+    else {
+        zipCodeInput.classList.add('invalid');
+    }
+})
+
+confirmedPasswordInput.addEventListener('blur',()=>{
+    if(passwordInput.value!==confirmedPasswordInput.value){
+        confirmedPasswordInput.setCustomValidity('Password did not match');
+        confirmedPasswordInput.classList.add('invalid');
+        confirmedPasswordInput.reportValidity();
+    }
+    else {
+        confirmedPasswordInput.setCustomValidity('');
+        confirmedPasswordInput.classList.remove('invalid');
     }
 })
 
@@ -30,26 +68,6 @@ icons.forEach((icon)=>{
 
         }
     })
-})
-
-countryInput.addEventListener('blur',()=>{
-    let countryName=countryInput.value.toLowerCase();
-    if (countryName==='united states'){
-        zipCodeInput.setAttribute('required','required');
-    }
-    else {
-        zipCodeInput.removeAttribute('required');
-    }
-})
-
-confirmedPasswordInput.addEventListener('blur',()=>{
-    if(passwordInput.value!==confirmedPasswordInput.value){
-        confirmedPasswordInput.setCustomValidity('Password did not match');
-        confirmedPasswordInput.reportValidity();
-    }
-    else {
-        confirmedPasswordInput.setCustomValidity('');
-    }
 })
 
 submitButton.addEventListener('click',()=>{
