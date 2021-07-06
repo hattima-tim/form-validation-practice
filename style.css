@@ -1,4 +1,36 @@
+/* form style copied from https://codepen.io/seskew/pen/XKJKNQ */
+
+form {
+  color: #333;
+  float: left;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0 20px 10px;
+  width: 200px;
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+}
+
+input{
+  float: left;
+  font-size: 13px;
+  height: 25px;
+  margin: 0;
+  width: 100%;
+}
+
 .fas{
+    margin-top: 9px;
     margin-left: -30px;
     cursor: pointer;
-  }
+}
+
+.invalid {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  outline: none;
+}
